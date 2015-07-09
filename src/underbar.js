@@ -110,7 +110,31 @@
   };
 
   // Produce a duplicate-free version of the array.
-  _.uniq = function(array) {
+  _.uniq = function(array, sorted) {
+    var unique = [];
+
+    if (sorted) {
+      var i;
+      var testNext = function() {
+        if (array[i] === array[i + 1]) {
+          i++;
+          return testNext();
+        } else {
+          unique.push(array[i]);
+        }
+      };
+      for (i = 0; i < array.length; i++) {
+        testNext();
+      }
+    } else {
+      _.each(array, function(item) {
+        if (!(item in unique)) {
+          unique.push(item);
+        }
+      });
+    }
+    
+    return unique;
   };
 
 
