@@ -91,12 +91,21 @@
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it        
-    var failed = [];
-    _.each(collection, function(item) {
-      if(!test(item)) {
-        failed.push(item);
+    
+    // implementation using filter
+    var failed = _.filter(collection, function(item) {
+      if (test(item) !== true) {
+        return true;
       }
     });
+    
+    // alternative implementation
+    // _.each(collection, function(item) {
+    //   if(!test(item)) {
+    //     failed.push(item);
+    //   }
+    // });
+    
     return failed;
   };
 
