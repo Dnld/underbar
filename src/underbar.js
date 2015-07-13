@@ -241,6 +241,21 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    iterator = arguments[1] || function(item) {return item ? true : false;};
+    
+    // implemented using reduce
+    return _.reduce(collection, function(passes, item) {
+      if (passes) {
+        return true;
+      } else if (iterator(item)) {
+        return true;
+      } else {
+        return false; 
+      }
+      
+    }, false);
+    
+    
   };
 
 
