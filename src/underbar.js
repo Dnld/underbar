@@ -53,8 +53,8 @@
         iterator(collection[i], i, collection);
       }
     } else {
-      for (var i in collection) {
-        iterator(collection[i], i, collection);
+      for (var j in collection) {
+        iterator(collection[j], j, collection);
       }
     }
   };
