@@ -276,6 +276,12 @@
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
+    _.each([].splice.call(arguments, 1), function(extender) {
+      _.each(extender, function(value, key) {
+        obj[key] = value;
+      });
+     });
+     return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
