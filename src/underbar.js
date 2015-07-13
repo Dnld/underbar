@@ -287,7 +287,7 @@
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
-    _.each([].splice.call(arguments,1), function(extender) {
+    _.each([].splice.call(arguments, 1), function(extender) {
       _.each(extender, function(value, key) {
         if (obj.hasOwnProperty(key) === false) {
           obj[key] = value;
@@ -338,6 +338,21 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    
+    var results = {};
+    
+    return function() {
+      var result;
+      if (results.hasOwnProperty(arguments[0])) {
+        result = results[arguments[0]];
+      } else {
+        result = func.apply(null, arguments);
+        results[arguments[0]] = result;
+        console.log(results);
+      }
+      return result;
+    };
+    
   };
 
   // Delays a function for the given number of milliseconds, and then calls
