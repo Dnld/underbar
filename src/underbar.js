@@ -287,6 +287,14 @@
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
+    _.each([].splice.call(arguments,1), function(extender) {
+      _.each(extender, function(value, key) {
+        if (obj.hasOwnProperty(key) === false) {
+          obj[key] = value;
+        }
+      });
+    });
+    return obj;
   };
 
 
