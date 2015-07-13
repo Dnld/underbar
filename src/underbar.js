@@ -128,7 +128,7 @@
       }
     } else {
       _.each(array, function(item) {
-        if (!(item in unique)) {
+        if (!(_.contains(unique, item))) {
           unique.push(item);
         }
       });
