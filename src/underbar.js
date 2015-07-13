@@ -232,7 +232,6 @@
       } else {
         return false; 
       }
-      
     }, true);
     
   };
@@ -251,8 +250,7 @@
         return true;
       } else {
         return false; 
-      }
-      
+      }      
     }, false);
     
     
