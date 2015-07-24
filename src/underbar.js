@@ -394,7 +394,6 @@
         var i = Math.floor(Math.random() * copy.length);
         shuffled.push(copy[i]);
         copy.splice(i, 1);
-        console.log(array, shuffled);
       }
     } while (String(shuffled) === String(array));
     
