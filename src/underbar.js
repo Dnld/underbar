@@ -348,7 +348,6 @@
       } else {
         result = func.apply(null, arguments);
         results[arguments[0]] = result;
-        console.log(results);
       }
       return result;
     };
@@ -386,14 +385,18 @@
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
     
-    var copy = array.slice();
-    var shuffled = [];
+    var copy, shuffled;
     
-    while (copy.length) {
-      var i = Math.floor(Math.random() * copy.length);
-      shuffled.push(copy[i]);
-      copy.splice(i, 1);
-    }
+    do {
+      copy = array.slice();
+      shuffled = [];
+      while (copy.length) {
+        var i = Math.floor(Math.random() * copy.length);
+        shuffled.push(copy[i]);
+        copy.splice(i, 1);
+        console.log(array, shuffled);
+      }
+    } while (String(shuffled) === String(array));
     
     return shuffled;
 
