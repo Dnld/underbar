@@ -192,11 +192,12 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
-    var reduceArgsLength = arguments.length;
+    var startValue = arguments.length < 3 ? false : true;
        
     _.each(collection, function(item, index, collection) {
-      if (!accumulator && reduceArgsLength < 3) {
+      if (!startValue) {
         accumulator = item;
+        startValue = true;
       } else {
         accumulator = iterator(accumulator, item, index, collection);
       }
