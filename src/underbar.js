@@ -145,8 +145,8 @@
     // the members, it also maintains an array of results.
     var mapped = [];    
     
-    _.each(collection, function(v, i, c) {
-      mapped.push(iterator(v, i, c));
+    _.each(collection, function(item, index, collection) {
+      mapped.push(iterator(item, index, collection));
     });
     
     return mapped;
