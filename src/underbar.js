@@ -244,16 +244,24 @@
     iterator = arguments[1] || function(item) {return item ? true : false;};
     
     // implemented using reduce
-    return _.reduce(collection, function(passes, item) {
-      if (passes) {
-        return true;
-      } else if (iterator(item)) {
+    // return _.reduce(collection, function(passes, item) {
+    //   if (passes) {
+    //     return true;
+    //   } else if (iterator(item)) {
+    //     return true;
+    //   } else {
+    //     return false; 
+    //   }      
+    // }, false);
+
+    // implemented using every
+    return !_.every(collection, function(item) {
+      if (!iterator(item)) {
         return true;
       } else {
-        return false; 
-      }      
-    }, false);
-    
+        return false;
+      }
+    });
     
   };
 
