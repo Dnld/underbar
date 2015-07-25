@@ -285,7 +285,7 @@
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
-    _.each([].splice.call(arguments, 1), function(extender) {
+    _.each([].slice.call(arguments, 1), function(extender) {
       _.each(extender, function(value, key) {
         obj[key] = value;
       });
@@ -296,7 +296,7 @@
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
-    _.each([].splice.call(arguments, 1), function(extender) {
+    _.each([].slice.call(arguments, 1), function(extender) {
       _.each(extender, function(value, key) {
         if (obj.hasOwnProperty(key) === false) {
           obj[key] = value;
@@ -305,7 +305,6 @@
     });
     return obj;
   };
-
 
   /**
    * FUNCTIONS
