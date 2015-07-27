@@ -472,6 +472,22 @@
   //
   // Hint: Use Array.isArray to check if something is an array
   _.flatten = function(nestedArray, result) {
+    var flat = [];
+    var flatIndex = 0;
+    
+    var makeFlat = function(item) {
+      _.each(item, function(item) {
+        if (Array.isArray(item)) {
+          makeFlat(item);
+        } else {
+          flat[flatIndex++] = item;
+        }
+      });
+    };
+    
+    makeFlat(nestedArray);
+    
+    return flat;
   };
 
   // Takes an arbitrary number of arrays and produces an array that contains
