@@ -353,7 +353,7 @@
       if (results.hasOwnProperty(arguments[0])) {
         result = results[arguments[0]];
       } else {
-        result = func.apply(null, arguments);
+        result = func.apply(this, arguments);
         results[arguments[0]] = result;
       }
       return result;
@@ -372,7 +372,7 @@
     var args = [].splice.call(arguments, 2);
     
     var delayedFunction = function() {
-      return func.apply(null, args);
+      return func.apply(this, args);
     };
     
     setTimeout(delayedFunction, arguments[1]);
