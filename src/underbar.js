@@ -489,13 +489,25 @@
       }
     });
     
-    return sharedValues;
-    
+    return sharedValues;    
   };
 
   // Take the difference between one array and a number of other arrays.
   // Only the elements present in just the first array will remain.
   _.difference = function(array) {
+    var differentValues = [];
+    var firstArray = arguments[0];
+    var arraysToCompare = Array.prototype.slice.call(arguments, 1);
+  
+    _.each(firstArray, function(item) {
+      if (_.every(arraysToCompare, function(arrayToCompare) {
+        return !_.contains(arrayToCompare, item);
+      })) {
+        differentValues.push(item);
+      }
+    });
+  
+    return differentValues;
   };
 
   // Returns a function, that, when invoked, will only be triggered at most once
