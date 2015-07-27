@@ -439,7 +439,7 @@
   // If iterator is a string, sort objects by that property with the name
   // of that string. For example, _.sortBy(people, 'name') should sort
   // an array of people by their name.
-  _.sortBy = function(collection, iterator) {
+  _.sortBy = function(collection, iterator) {  
   };
 
   // Zip together two or more arrays with elements of the same index
@@ -448,6 +448,23 @@
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
+    
+    var zipped = [];
+    var maxArray = _.reduce(arguments, function(a, b) {
+      return a.length > b.length ? a : b;
+    });
+    var maxArrayLength = maxArray.length;
+    
+    for (var i = 0; i < maxArrayLength; i++) {
+      var subarray = [];
+      _.each(arguments, function(argument) {
+        subarray.push(argument[i]);
+      });
+      zipped.push(subarray);
+    }
+    
+    return zipped;
+    
   };
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
