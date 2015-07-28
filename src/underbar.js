@@ -532,5 +532,17 @@
   //
   // Note: This is difficult! It may take a while to implement.
   _.throttle = function(func, wait) {
+    var dateOfLastInvocation;
+
+    return function() {
+      var dateOfCurrentInvocation = new Date();
+      if (dateOfLastInvocation === undefined || 
+        dateOfCurrentInvocation.getTime() - 
+        dateOfLastInvocation.getTime() > wait) {
+        dateOfLastInvocation = new Date;
+        func.apply(this, arguments);
+      }
+    };
+    
   };
 }());
